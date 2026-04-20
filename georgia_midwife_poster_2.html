@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Georgia Midwifery Crisis | The Lotus Assembly</title>
+<meta name="description" content="Georgia has some of the strictest midwifery laws in the nation. 93 counties have no hospital labor and delivery unit. Here is what is happening and what we can do." />
+<meta property="og:title" content="Georgia Midwifery Crisis | The Lotus Assembly" />
+<meta property="og:description" content="Georgia bans direct-entry midwives entirely and restricts certified nurse midwives from practicing independently. Moms are paying the price." />
+<meta property="og:type" content="website" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #F4F7F2;
+  color: #1A2E1A;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.hero {
+  background: linear-gradient(135deg, #1B4332 0%, #2D6A4F 55%, #40916C 100%);
+  color: white;
+  padding: 44px 28px 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -80px; left: -40px;
+  width: 240px; height: 240px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+}
+
+.hero-ribbon {
+  display: inline-block;
+  background: rgba(255,255,255,0.16);
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 5px 18px;
+  margin-bottom: 18px;
+  color: #B7E4C7;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  font-weight: 900;
+  line-height: 1.12;
+  margin-bottom: 14px;
+  color: #fff;
+  position: relative;
+}
+
+.hero h1 span { color: #B7E4C7; }
+
+.hero p {
+  font-size: 15px;
+  line-height: 1.7;
+  max-width: 520px;
+  margin: 0 auto;
+  color: rgba(255,255,255,0.85);
+  position: relative;
+}
+
+.stat-bar { background: #1B4332; display: flex; }
+
+.stat-item {
+  flex: 1;
+  text-align: center;
+  padding: 16px 8px;
+  border-right: 1px solid rgba(255,255,255,0.12);
+}
+
+.stat-item:last-child { border-right: none; }
+
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #B7E4C7;
+  display: block;
+  margin-bottom: 3px;
+}
+
+.stat-label {
+  font-size: 10.5px;
+  color: rgba(255,255,255,0.62);
+  line-height: 1.35;
+  display: block;
+}
+
+.section { padding: 30px 24px 0; }
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1B4332;
+  margin-bottom: 4px;
+}
+
+.section-sub {
+  font-size: 13px;
+  color: #4A7A5A;
+  margin-bottom: 18px;
+  font-style: italic;
+}
+
+.what-box {
+  background: white;
+  border-radius: 16px;
+  padding: 22px;
+  border-left: 5px solid #40916C;
+  box-shadow: 0 2px 14px rgba(27,67,50,0.09);
+}
+
+.what-box p { font-size: 15px; line-height: 1.8; color: #1A2E1A; }
+.what-box strong { color: #1B4332; }
+
+.divider {
+  height: 2px;
+  background: linear-gradient(90deg, #40916C, #B7E4C7, transparent);
+  margin: 28px 24px 0;
+  border-radius: 2px;
+}
+
+.midwife-types {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.type-card {
+  background: white;
+  border-radius: 14px;
+  padding: 18px 16px;
+  box-shadow: 0 2px 10px rgba(27,67,50,0.08);
+  border-top: 3px solid #40916C;
+}
+
+.type-card.blocked { border-top-color: #C45E5E; }
+
+.type-status {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 100px;
+  margin-bottom: 8px;
+}
+
+.status-allowed { background: rgba(64,145,108,0.12); color: #1B4332; }
+.status-blocked  { background: rgba(196,94,94,0.12);  color: #8B2020; }
+.status-partial  { background: rgba(232,160,80,0.15); color: #7A4A10; }
+
+.type-card h3 { font-size: 14px; font-weight: 600; color: #1A2E1A; margin-bottom: 6px; line-height: 1.3; }
+.type-card p  { font-size: 12px; color: #4A6A4A; line-height: 1.6; }
+
+.crisis-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.crisis-card {
+  background: white;
+  border-radius: 14px;
+  padding: 18px 16px;
+  box-shadow: 0 2px 10px rgba(27,67,50,0.08);
+}
+
+.crisis-icon { font-size: 24px; margin-bottom: 10px; display: block; }
+.crisis-card h3 { font-size: 14px; font-weight: 600; color: #1B4332; margin-bottom: 6px; line-height: 1.3; }
+.crisis-card p  { font-size: 13px; color: #4A6A4A; line-height: 1.6; }
+
+.stat-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 14px;
+  padding: 16px 12px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(27,67,50,0.08);
+}
+
+.big-stat {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #2D6A4F;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.stat-card p { font-size: 11px; color: #4A6A4A; line-height: 1.5; }
+
+.solution-cards { display: flex; flex-direction: column; gap: 12px; }
+
+.solution-card {
+  background: white;
+  border-radius: 14px;
+  padding: 18px;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  box-shadow: 0 2px 10px rgba(27,67,50,0.07);
+}
+
+.solution-num {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: #1B4332;
+  color: white;
+  font-weight: 700; font-size: 15px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  font-family: 'Playfair Display', serif;
+}
+
+.solution-card h3 { font-size: 15px; font-weight: 600; color: #1B4332; margin-bottom: 5px; }
+.solution-card p  { font-size: 13px; color: #4A6A4A; line-height: 1.65; }
+
+.law-box {
+  background: rgba(196,94,94,0.06);
+  border: 1px solid rgba(196,94,94,0.2);
+  border-left: 4px solid #C45E5E;
+  border-radius: 14px;
+  padding: 20px 22px;
+  margin-bottom: 0;
+}
+
+.law-box h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  color: #8B2020;
+  margin-bottom: 8px;
+}
+
+.law-box p { font-size: 13px; color: #5A3030; line-height: 1.75; }
+.law-box strong { color: #8B2020; }
+
+.band-card {
+  background: white;
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: 0 2px 14px rgba(27,67,50,0.09);
+  border-bottom: 4px solid #40916C;
+}
+
+.band-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px; color: #1B4332; margin-bottom: 14px;
+}
+
+.band-idea {
+  display: flex; gap: 12px; align-items: flex-start;
+  margin-bottom: 14px; padding-bottom: 14px;
+  border-bottom: 1px solid #C8E6D4;
+}
+
+.band-idea:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.band-emoji { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+.band-idea h4 { font-size: 14px; font-weight: 600; color: #1A2E1A; margin-bottom: 3px; }
+.band-idea p  { font-size: 13px; color: #4A6A4A; line-height: 1.6; }
+
+.source-note { font-size: 11px; color: #4A7A5A; margin-top: 8px; line-height: 1.6; font-style: italic; }
+
+.cta-section {
+  background: linear-gradient(135deg, #1B4332, #2D6A4F);
+  margin: 28px 24px 0;
+  border-radius: 20px;
+  padding: 32px 26px;
+  color: white;
+  text-align: center;
+}
+
+.cta-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px; font-weight: 700;
+  color: #fff; margin-bottom: 10px; line-height: 1.2;
+}
+
+.cta-section > p {
+  font-size: 14px; color: rgba(255,255,255,0.82);
+  line-height: 1.7; margin-bottom: 24px;
+}
+
+.form-input {
+  display: block; width: 100%;
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.35);
+  border-radius: 12px; padding: 13px 16px;
+  color: white; font-size: 14px;
+  font-family: 'DM Sans', sans-serif;
+  outline: none; margin-bottom: 10px;
+}
+
+.form-input::placeholder { color: rgba(255,255,255,0.5); }
+.form-input:focus { border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.22); }
+
+.role-label { font-size: 13px; color: rgba(255,255,255,0.75); text-align: left; margin-bottom: 10px; }
+
+.role-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 18px; }
+
+.role-btn {
+  background: rgba(255,255,255,0.12);
+  border: 1.5px solid rgba(255,255,255,0.28);
+  border-radius: 10px; padding: 11px 8px;
+  color: rgba(255,255,255,0.82); font-size: 12px;
+  cursor: pointer; text-align: center;
+  font-family: 'DM Sans', sans-serif;
+  transition: all 0.15s; line-height: 1.4;
+}
+
+.role-btn:hover { background: rgba(255,255,255,0.22); color: white; }
+.role-btn.selected { background: white; color: #1B4332; border-color: white; font-weight: 600; }
+
+.submit-btn {
+  width: 100%; background: white; color: #1B4332;
+  border: none; border-radius: 12px; padding: 15px;
+  font-size: 16px; font-weight: 700;
+  font-family: 'Playfair Display', serif;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.18);
+}
+
+.submit-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(0,0,0,0.22); }
+.submit-btn:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+
+.error-msg {
+  background: rgba(255,80,80,0.2);
+  border: 1px solid rgba(255,150,150,0.4);
+  border-radius: 10px; padding: 10px 14px;
+  font-size: 13px; color: #FFD0D0;
+  margin-bottom: 12px; display: none; text-align: left;
+}
+
+.success-box {
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.36);
+  border-radius: 14px; padding: 22px; display: none;
+}
+
+.success-box h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px; color: #B7E4C7; margin-bottom: 8px;
+}
+
+.success-box p { font-size: 14px; color: rgba(255,255,255,0.88); line-height: 1.65; }
+
+.tag {
+  display: inline-block;
+  background: #D8EEE4; color: #1B4332;
+  border-radius: 100px; padding: 4px 12px;
+  font-size: 12px; font-weight: 600; margin: 3px 2px;
+}
+
+.lt-footer {
+  margin: 24px 24px 0;
+  background: white;
+  border-radius: 16px;
+  padding: 20px 22px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(27,67,50,0.08);
+  border: 1px solid #C8E6D4;
+}
+
+.lt-footer p { font-size: 13px; color: #2D6A4F; margin-bottom: 12px; line-height: 1.5; }
+
+.lt-footer-btn {
+  display: inline-block;
+  background: #1B4332;
+  color: white;
+  border-radius: 12px;
+  padding: 12px 28px;
+  font-size: 14px; font-weight: 700;
+  text-decoration: none;
+  font-family: 'DM Sans', sans-serif;
+  transition: opacity 0.15s;
+  margin: 4px;
+}
+
+.lt-footer-btn:hover { opacity: 0.85; }
+.lt-footer-btn.outline { background: #F4F7F2; color: #1B4332; border: 2px solid #1B4332; }
+
+.footer-note {
+  text-align: center; padding: 24px;
+  font-size: 12px; color: #4A7A5A; line-height: 1.8;
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-ribbon">The Lotus Assembly</div>
+  <h1>Georgia Is <span>Blocking</span> the<br>Women Who Help Moms Give Birth</h1>
+  <p>Georgia has some of the strictest midwifery laws in the nation. Certified midwives are trained, ready, and willing to serve. The state will not let them. Moms and babies are paying the price.</p>
+</div>
+
+<div class="stat-bar">
+  <div class="stat-item">
+    <span class="stat-num">93</span>
+    <span class="stat-label">Georgia counties with no<br>hospital labor and delivery unit</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">42%</span>
+    <span class="stat-label">of Georgia counties are<br>maternity care deserts</span>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num">2nd</span>
+    <span class="stat-label">highest maternal mortality<br>rate in the U.S. in 2021</span>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">What Is a Midwife and Why Does It Matter?</div>
+  <div class="section-sub">In plain terms</div>
+  <div class="what-box">
+    <p>A <strong>midwife</strong> is a trained professional who specializes in pregnancy, childbirth, and postpartum care. They are not a replacement for doctors in emergencies but they are essential for routine pregnancies, especially in communities where no OB doctor or hospital is nearby. <strong>Studies show midwife-led care reduces unnecessary interventions, improves birth outcomes, and is particularly effective in underserved communities.</strong> In Georgia, where 93 counties have no hospital labor and delivery unit, midwives could be the difference between care and no care at all. But Georgia law makes it nearly impossible for many of them to practice.</p>
+  </div>
+</div>
+
+<div class="section" style="padding-top:24px;">
+  <div class="section-title">The Three Types of Midwives in Georgia</div>
+  <div class="section-sub">And what the law actually allows</div>
+  <div class="midwife-types">
+    <div class="type-card">
+      <span class="type-status status-partial">Restricted</span>
+      <h3>Certified Nurse Midwife (CNM)</h3>
+      <p>Licensed nurses with graduate degrees in midwifery. Legal in Georgia but banned from prescribing medication unless they sign a supervision contract with a physician. Many hospitals deny them privileges to practice.</p>
+    </div>
+    <div class="type-card blocked">
+      <span class="type-status status-blocked">Banned</span>
+      <h3>Certified Professional Midwife (CPM)</h3>
+      <p>Nationally certified midwives trained specifically for home and birth center births. Georgia does not recognize their certification. They cannot legally practice, access life-saving medications, or collaborate with other providers.</p>
+    </div>
+    <div class="type-card blocked">
+      <span class="type-status status-blocked">Banned</span>
+      <h3>Direct Entry Midwife</h3>
+      <p>Trained outside of nursing programs, often with deep community roots and cultural competence. Georgia has effectively banned them since 1991, leaving communities of color with fewer birth options and less culturally familiar care.</p>
+    </div>
+    <div class="type-card">
+      <span class="type-status status-allowed">Legal</span>
+      <h3>Lay Midwife / Traditional Midwife</h3>
+      <p>Informal practitioners with experience but no formal licensing pathway in Georgia. They exist in communities but operate in a legal gray area with no access to medical support or supplies.</p>
+    </div>
+  </div>
+  <p class="source-note">Source: Center for Reproductive Rights · Georgia CPM Organization · Georgia Board of Nursing</p>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-title">The History Behind the Ban</div>
+  <div class="section-sub">This did not happen by accident</div>
+  <div class="law-box">
+    <h3>Georgia has been restricting midwives for over 100 years.</h3>
+    <p>In the late 1800s and early 1900s, doctors and public health officials launched a campaign against midwives that was rooted in <strong>racism, sexism, and economic competition.</strong> They called it "the midwife problem." Black midwives, who were the primary birth attendants in their communities, were targeted first. Georgia began requiring certification in the early 1900s, then in 1979 stopped certifying new midwives entirely. By 1991, only CNMs were allowed to practice. The result is a state where trained, qualified midwives are ready to serve but the law will not let them. <strong>The Center for Reproductive Rights is currently suing the state of Georgia over these restrictions.</strong></p>
+  </div>
+  <p class="source-note">Source: Center for Reproductive Rights · PMC Maternal Mortality Study 2024</p>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-title">What Is Happening to Georgia Moms Right Now</div>
+  <div class="section-sub">The real consequences of these restrictions</div>
+  <div class="crisis-grid">
+    <div class="crisis-card">
+      <span class="crisis-icon">🚗</span>
+      <h3>Driving hours for appointments</h3>
+      <p>Women in Southeast Georgia are traveling 2 or more hours each way for prenatal care after the Savannah Birthing Center closed. For late pregnancy, weekly appointments become exhausting and dangerous.</p>
+    </div>
+    <div class="crisis-card">
+      <span class="crisis-icon">🏥</span>
+      <h3>Birth centers closing</h3>
+      <p>In February 2025, Georgia's oldest freestanding birth center closed, leaving just 3 birth centers in the entire state. As of August 2025, only 36% of rural Georgia hospitals offered labor and delivery services.</p>
+    </div>
+    <div class="crisis-card">
+      <span class="crisis-icon">🤰</span>
+      <h3>Certified midwives with nowhere to work</h3>
+      <p>Hospitals in many Georgia communities will not give CNMs privileges to practice even where they are technically legal. Midwives are trained and certified but hospitals refuse to let them serve patients.</p>
+    </div>
+    <div class="crisis-card">
+      <span class="crisis-icon">✈️</span>
+      <h3>Women leaving the state for care</h3>
+      <p>Some Georgia mothers are traveling to neighboring states like South Carolina or Tennessee to access midwife-led birth centers because the options simply do not exist where they live.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="padding-top:24px;">
+  <div class="section-title">By the Numbers</div>
+  <div class="stat-cards">
+    <div class="stat-card">
+      <span class="big-stat">75</span>
+      <p>Georgia counties with no OB or nurse midwife of any kind</p>
+    </div>
+    <div class="stat-card">
+      <span class="big-stat">66.3</span>
+      <p>maternal deaths per 100,000 live births in Georgia in 2021, nearly twice the national average</p>
+    </div>
+    <div class="stat-card">
+      <span class="big-stat">3</span>
+      <p>freestanding birth centers left in the entire state of Georgia as of 2025</p>
+    </div>
+  </div>
+  <p class="source-note">Source: PMC Maternal Mortality Study 2024 · Center for Reproductive Rights · WTOC News March 2026</p>
+</div>
+
+<div class="divider"></div>
+
+<div class="section">
+  <div class="section-title">Proposed Solutions</div>
+  <div class="section-sub">What needs to happen and what you can do to push for it</div>
+  <div class="solution-cards">
+    <div class="solution-card">
+      <div class="solution-num">1</div>
+      <div>
+        <h3>License Certified Professional Midwives in Georgia</h3>
+        <p>Georgia is one of a shrinking number of states that does not license CPMs. Legislation to recognize their national certification has been proposed and blocked repeatedly. Contact your Georgia state representative and senator and ask them to support CPM licensure now. The Georgia CPM Organization tracks this legislation at georgiacpm.org.</p>
+      </div>
+    </div>
+    <div class="solution-card">
+      <div class="solution-num">2</div>
+      <div>
+        <h3>Remove the physician supervision requirement for CNMs</h3>
+        <p>Certified nurse midwives in Georgia cannot prescribe medication without entering a supervision contract with a physician. This is unnecessary, burdensome, and has no equivalent in most other states. North Carolina just removed this requirement in 2025. Georgia should follow. Ask your lawmakers to support full practice authority for CNMs.</p>
+      </div>
+    </div>
+    <div class="solution-card">
+      <div class="solution-num">3</div>
+      <div>
+        <h3>Support the Center for Reproductive Rights lawsuit</h3>
+        <p>The Center for Reproductive Rights filed a lawsuit challenging Georgia's midwifery restrictions in 2024. You can sign their petition, share their resources, and donate to support the legal fight at reproductiverights.org.</p>
+      </div>
+    </div>
+    <div class="solution-card">
+      <div class="solution-num">4</div>
+      <div>
+        <h3>Fund and expand community birth centers</h3>
+        <p>With only 3 birth centers left in all of Georgia, new ones are desperately needed especially in rural South Georgia. Support organizations working to open community-based birth centers and advocate for Medicaid reimbursement for birth center care which makes them financially viable.</p>
+      </div>
+    </div>
+    <div class="solution-card">
+      <div class="solution-num">5</div>
+      <div>
+        <h3>Push hospitals to grant CNM privileges</h3>
+        <p>Even where CNMs are legal, many Georgia hospitals refuse to grant them practice privileges. Contact your local hospital's board of directors and ask why their credentialing policies block midwives. Organize with other women to make this a public conversation.</p>
+      </div>
+    </div>
+    <div class="solution-card">
+      <div class="solution-num">6</div>
+      <div>
+        <h3>Support and share the stories of Georgia midwives</h3>
+        <p>Certified Professional Midwives in Georgia are practicing and training in a legal gray area because women need them. Find them at georgiacpm.org. Share their stories. Normalize midwifery care. The cultural shift matters as much as the legal one.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section" style="padding-bottom: 28px;">
+  <div class="section-title">Take Action Right Now</div>
+  <div class="section-sub">Three things you can do today</div>
+  <div class="law-box" style="background: rgba(27,67,50,0.05); border-color: rgba(27,67,50,0.2); border-left-color: #2D6A4F;">
+    <h3 style="color:#1B4332;">Do these three things today:</h3>
+    <p style="color:#2A4A2A;">
+      <strong>1. Look up your Georgia state rep</strong> at openstates.org and send them one email asking them to support CPM licensure and CNM full practice authority.<br><br>
+      <strong>2. Sign the Center for Reproductive Rights petition</strong> at reproductiverights.org/cases/challenging-harmful-midwifery-restrictions-georgia<br><br>
+      <strong>3. Share this poster</strong> with every woman you know in Georgia. The more women who understand this issue the harder it becomes for lawmakers to ignore it.
+    </p>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="section" style="padding-bottom: 28px;">
+  <div class="section-title">How to Band Women Together</div>
+  <div class="section-sub">Turn this poster into a movement in your community</div>
+  <div class="band-card">
+    <h3>Ideas to connect and organize:</h3>
+    <div class="band-idea">
+      <span class="band-emoji">📱</span>
+      <div>
+        <h4>Start a Georgia Birth Rights group chat</h4>
+        <p>Create a private group on Discord, GroupMe, or Signal for women in your county or region. Share updates on the lawsuit, legislative news, and local resources. Keep each other informed and activated.</p>
+      </div>
+    </div>
+    <div class="band-idea">
+      <span class="band-emoji">📋</span>
+      <div>
+        <h4>Host a Know Your Rights birth meeting</h4>
+        <p>Invite a local CNM, doula, or birth advocate to speak at a community gathering about what care options actually exist in your area and what women are legally entitled to. Knowledge is the first step to demanding change.</p>
+      </div>
+    </div>
+    <div class="band-idea">
+      <span class="band-emoji">✍️</span>
+      <div>
+        <h4>Organize a letter-writing day to the Georgia legislature</h4>
+        <p>Gather women and spend one hour writing to your Georgia state representative and senator demanding CPM licensure and full practice authority for CNMs. Find your rep at openstates.org. Numbers matter. One woman sending a letter is a complaint. A hundred women sending letters is a movement.</p>
+      </div>
+    </div>
+    <div class="band-idea">
+      <span class="band-emoji">🏥</span>
+      <div>
+        <h4>Show up to your local hospital board meetings</h4>
+        <p>Most hospital board meetings are open to the public. Attend and ask publicly why your hospital does not grant CNMs practice privileges. Bring other women with you. Public pressure works when it is consistent and visible.</p>
+      </div>
+    </div>
+    <div class="band-idea">
+      <span class="band-emoji">📣</span>
+      <div>
+        <h4>Amplify Georgia midwives on social media</h4>
+        <p>Follow and share the Georgia CPM Organization at georgiacpm.org and the Center for Reproductive Rights. Share their content. Tag your local news stations. The more noise women make about this the harder it becomes to ignore.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="cta-section">
+  <h2>Join The Lotus Assembly</h2>
+  <p>Fill in your info below and I will personally reach out to connect you with women organizing around this issue in your area and share resources on what is happening in Georgia and beyond. You will not be left on a list. You will hear from me.</p>
+
+  <div id="form-area">
+    <div id="error-msg" class="error-msg"></div>
+    <input class="form-input" type="text"  id="f-name"   placeholder="Your first name" />
+    <input class="form-input" type="email" id="f-email"  placeholder="Your email address" />
+    <input class="form-input" type="text"  id="f-city"   placeholder="Your city and state" />
+    <input class="form-input" type="text"  id="f-county" placeholder="Your county (optional)" />
+
+    <p class="role-label">I want to help by: <span style="color:rgba(255,255,255,0.45); font-size:11px;">(choose all that apply)</span></p>
+    <div class="role-row">
+      <div class="role-btn" onclick="toggleRole(this)">📣 Advocacy and lobbying</div>
+      <div class="role-btn" onclick="toggleRole(this)">📚 Sharing education</div>
+      <div class="role-btn" onclick="toggleRole(this)">💰 Donating and fundraising</div>
+      <div class="role-btn" onclick="toggleRole(this)">🤰 Supporting moms directly</div>
+    </div>
+
+    <button class="submit-btn" id="submit-btn" onclick="handleSubmit()">Count Me In. I Stand With Georgia Moms ♡</button>
+    <p style="font-size:11px; margin-top:12px; color:rgba(255,255,255,0.45);">No spam, ever. Unsubscribe anytime.</p>
+  </div>
+
+  <div class="success-box" id="success">
+    <h3>You are in. Thank you. ♡</h3>
+    <p>You just took a stand for every Georgia mom who deserves access to the birth experience and the care provider of her choice. Check your email. You will hear from me directly.</p>
+    <p style="margin-top:12px;">Share this with 3 women in Georgia. That is how laws change.</p>
+    <div style="margin-top:16px;">
+      <span class="tag">#TheLotusAssembly</span>
+      <span class="tag">#GeorgiaMidwives</span>
+      <span class="tag">#FreetheMidwives</span>
+    </div>
+    <div style="margin-top:16px;">
+      <a href="https://linktr.ee/ladylotuss9" target="_blank" rel="noopener"
+         style="display:inline-block; background:white; color:#1B4332; border-radius:10px;
+                padding:10px 22px; font-size:13px; font-weight:700; text-decoration:none;
+                font-family:'DM Sans',sans-serif;">
+        Visit Our Linktree ↗
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="lt-footer">
+  <p>Join my Discord and socials for all things womanhood. Explore, connect, and get involved through my Linktree. Share it with every woman you know.</p>
+  <a class="lt-footer-btn" href="https://discord.gg/sbne7xQWW" target="_blank" rel="noopener">💬 Join the Discord ↗</a>
+  <a class="lt-footer-btn outline" href="https://linktr.ee/ladylotuss9" target="_blank" rel="noopener">🌿 Visit Linktree ↗</a>
+</div>
+
+<div class="footer-note">
+  <strong>All statistics verified from primary sources:</strong><br>
+  Center for Reproductive Rights · PMC Maternal Mortality Study 2024 · March of Dimes 2024 Report<br>
+  Georgia CPM Organization · WTOC News March 2026 · AJC September 2024<br><br>
+  <span class="tag">#TheLotusAssembly</span>
+  <span class="tag">#GeorgiaMidwives</span>
+  <span class="tag">#FreetheMidwives</span>
+  <span class="tag">#MaternalJustice</span><br><br>
+  Print this. Post this. Share this. Every share moves the needle.
+</div>
+
+<script>
+var APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxn7zM3jNUGYcGts9S1MEGKyXwQYdryn8kppBhha3AbXYreDuMjaHTImy5e7RBz56WOqw/exec";
+var SECRET_TOKEN    = "LadyLotus2024CircleOfMamas!Secure";
+var MAX_LEN         = 200;
+
+function toggleRole(el) { el.classList.toggle('selected'); }
+
+function sanitize(str) {
+  return str.replace(/<[^>]*>/g, "").replace(/[<>'"]/g, "").trim();
+}
+
+async function handleSubmit() {
+  var errBox = document.getElementById('error-msg');
+  errBox.style.display = 'none';
+
+  var name   = sanitize(document.getElementById('f-name').value);
+  var email  = sanitize(document.getElementById('f-email').value).toLowerCase();
+  var city   = sanitize(document.getElementById('f-city').value);
+  var county = sanitize(document.getElementById('f-county').value);
+
+  if (!name || !email) {
+    errBox.textContent = 'Please enter your first name and email to join!';
+    errBox.style.display = 'block';
+    return;
+  }
+
+  var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    errBox.textContent = 'Please enter a valid email address.';
+    errBox.style.display = 'block';
+    return;
+  }
+
+  var fields = [name, email, city, county];
+  for (var i = 0; i < fields.length; i++) {
+    if (fields[i].length > MAX_LEN) {
+      errBox.textContent = 'One of your entries is too long. Please shorten it and try again.';
+      errBox.style.display = 'block';
+      return;
+    }
+  }
+
+  var selectedRoles = [];
+  var btns = document.querySelectorAll('.role-btn.selected');
+  for (var j = 0; j < btns.length; j++) {
+    selectedRoles.push(sanitize(btns[j].textContent));
+  }
+
+  var btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+
+  try {
+    await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        token: SECRET_TOKEN,
+        name: name,
+        email: email,
+        city: city,
+        county: county,
+        roles: selectedRoles.join(', '),
+        source: "Georgia Midwife Poster"
+      })
+    });
+
+    document.getElementById('form-area').style.display = 'none';
+    document.getElementById('success').style.display = 'block';
+
+  } catch (err) {
+    btn.disabled = false;
+    btn.textContent = 'Count Me In. I Stand With Georgia Moms ♡';
+    errBox.textContent = 'Something went wrong. Please check your connection and try again.';
+    errBox.style.display = 'block';
+  }
+}
+</script>
+</body>
+</html>
